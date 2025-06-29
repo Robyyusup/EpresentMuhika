@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin - SMK Muhammadiyah Campaka Purwakarta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa',
+                            500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a', 950: '#172554',
+                        },
+                        secondary: {
+                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8',
+                            500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e', 950: '#082f49',
+                        },
+                        success: {
+                            50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80',
+                            500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d',
+                        },
+                        warning: {
+                            50: '#fefce8', 100: '#fef9c3', 200: '#fef08a', 300: '#fde047', 400: '#facc15',
+                            500: '#eab308', 600: '#ca8a04', 700: '#a16207', 800: '#854d0e', 900: '#713f12',
+                        },
+                        danger: {
+                            50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5', 400: '#f87171',
+                            500: '#ef4444', 600: '#dc2626', 700: '#b91c1c', 800: '#991b1b', 900: '#7f1d1d',
+                        },
+                        neutral: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8',
+                            500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a', 950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'slide-down': 'slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'scale-in': 'scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-soft': 'bounceSoft 2s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'ripple': 'ripple 1.5s linear infinite',
+                        'wave': 'wave 1.5s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s infinite',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'particle': 'particle 4s linear infinite',
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'gradient-y': 'gradient-y 3s ease infinite',
+                        'spin-slow': 'spin 3s linear infinite',
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                        'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8) rotate(-5deg)' },
+                            '100%': { opacity: '1', transform: 'scale(1) rotate(0deg)' },
+                        },
+                        bounceSoft: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(2deg)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1)' },
+                            '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.3)' },
+                        },
+                        ripple: {
+                            '0%': { transform: 'scale(0.8)', opacity: '1' },
+                            '100%': { transform: 'scale(3)', opacity: '0' },
+                        },
+                        wave: {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '25%': { transform: 'rotate(8deg)' },
+                            '75%': { transform: 'rotate(-8deg)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        },
+                        morph: {
+                            '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+                            '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+                        },
+                        particle: {
+                            '0%': { transform: 'translateY(0) rotate(0deg)', opacity: '1' },
+                            '100%': { transform: 'translateY(-100px) rotate(360deg)', opacity: '0' },
+                        },
+                        'gradient-x': {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        },
+                        'gradient-y': {
+                            '0%, 100%': { 'background-position': '50% 0%' },
+                            '50%': { 'background-position': '50% 100%' },
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        },
+                    },
+                }
+            }
+        };
+    </script>
+    <style>
+        * {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            background-size: 400% 400%;
+            animation: gradient-x 15s ease infinite;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #f8fafc;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Advanced Animated Background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+            animation: morph 12s ease-in-out infinite;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particle 4s linear infinite;
+        }
+
+        /* Enhanced Glass Container */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            box-shadow: 
+                0 32px 64px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .glass-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enhanced Input Styles */
+        .input-field {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 18px 24px;
+            color: #f8fafc;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .input-field::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .input-field:focus::before {
+            left: 100%;
+        }
+
+        .input-field::placeholder {
+            color: rgba(248, 250, 252, 0.5);
+            font-weight: 400;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #60a5fa;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 0 0 4px rgba(96, 165, 250, 0.2),
+                0 8px 32px rgba(96, 165, 250, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+            border: none;
+            border-radius: 20px;
+            padding: 18px 32px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 36px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Enhanced Tab Styles */
+        .tab-button {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 14px 28px;
+            color: rgba(248, 250, 252, 0.8);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #f8fafc;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-button:hover::before {
+            width: 120px;
+            height: 120px;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-color: #3b82f6;
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        /* Enhanced Table Styles */
+        .data-table {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .data-table:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%);
+            color: #f8fafc;
+            padding: 20px 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .data-table th::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+        }
+
+        .data-table td {
+            padding: 18px 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .data-table tbody tr {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(8px) scale(1.01);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Enhanced Status Badges */
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .status-badge:hover {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .status-badge:hover::before {
+            left: 100%;
+        }
+
+        .status-hadir { 
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); 
+            color: white;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+        }
+        .status-alfa { 
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); 
+            color: white;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+        .status-izin { 
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%); 
+            color: white;
+            box-shadow: 0 4px 12px rgba(234, 179, 8, 0.4);
+        }
+        .status-sakit { 
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); 
+            color: white;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+        }
+        .status-default { 
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%); 
+            color: white;
+            box-shadow: 0 4px 12px rgba(100, 116, 139, 0.4);
+        }
+
+        /* Enhanced Loading Animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: #60a5fa;
+            animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        /* Enhanced Theme Toggle */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 10px 20px;
+            color: rgba(248, 250, 252, 0.8);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #f8fafc;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced Map Container */
+        #mapContainer {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #mapContainer:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Enhanced Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.03) rotate(1deg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced Logo/Avatar */
+        .logo-avatar {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .logo-avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        .logo-avatar:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple 0.8s linear;
+            pointer-events: none;
+        }
+
+        /* Enhanced User Info Card */
+        .user-info-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 12px 20px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-info-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced Messages */
+        .error-message, .success-message {
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(10px);
+            animation: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.15));
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(22, 163, 74, 0.15));
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        /* Particle System */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle-element {
+            position: absolute;
+            display: block;
+            pointer-events: none;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: particle 8s linear infinite;
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .glass-container {
+                margin: 12px;
+                padding: 24px;
+                border-radius: 24px;
+            }
+            
+            .tab-button {
+                padding: 12px 16px;
+                font-size: 12px;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 12px 8px;
+                font-size: 14px;
+            }
+            
+            .status-badge {
+                padding: 6px 12px;
+                font-size: 10px;
+            }
+            
+            .mobile-table tr {
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 16px;
+                padding: 16px;
+                margin-bottom: 16px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .mobile-table tr:hover {
+                transform: translateY(-4px) scale(1.02);
+                box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Enhanced Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8));
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(37, 99, 235, 1));
+            transform: scale(1.2);
+        }
+
+        /* Toast Notification Enhancement */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(30, 41, 59, 0.95);
+            color: white;
+            padding: 20px 28px;
+            border-radius: 16px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 1000;
+            transform: translateX(400px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            font-size: 20px;
+        }
+
+        /* Modal Enhancement */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            transform: translateY(40px) scale(0.9);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Content sections animations */
+        .content-section {
+            animation: fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .content-section.hidden {
+            display: none;
+        }
+
+        /* Enhanced filter controls */
+        .filter-controls {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-controls select {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #f8fafc;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-controls select:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+        }
+
+        /* Button enhancements */
+        .btn-secondary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            border-radius: 16px;
+            padding: 14px 24px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 28px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 24px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-light {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 1px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 18px 32px;
+            color: #334155;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-light:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Short text utility classes */
+        .short-text {
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .short-text:hover {
+            overflow: visible;
+            white-space: normal;
+            max-width: none;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 4px 8px;
+            border-radius: 8px;
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    
+    <!-- SheetJS for Excel export -->
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    
+    <!-- Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body class="animate-fade-in">
+    <!-- Enhanced Animated Background -->
+    <div class="bg-pattern"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle text-success-400"></i>
+        <div id="toast-message">Operation completed successfully</div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="text-xl font-bold mb-4" id="modalTitle">Konfirmasi Penghapusan Data</h3>
+            <p id="modalMessage" class="mb-6">Apakah Anda yakin ingin menghapus semua data ini? Tindakan ini tidak dapat dibatalkan.</p>
+            <div class="flex justify-end gap-3">
+                <button id="cancelDelete" class="btn-light">Batal</button>
+                <button id="confirmDelete" class="btn-danger">Hapus Sekarang</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8 relative z-10">
+        <div class="container glass-container animate-slide-up w-full max-w-6xl">
+            <!-- Login Area -->
+            <div id="login-area" class="max-w-md mx-auto">
+                <div class="text-center mb-10">
+                    <div class="logo-avatar w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden shadow-2xl">
+                        <img src="https://robyyusup.github.io/ABSENSIONLINEMUHIKA/logo_muhika-removebg-preview.png" alt="Logo SMK" class="w-full h-full object-cover" />
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-3 bg-gradient-to-r from-primary-200 via-secondary-200 to-primary-300 bg-clip-text text-transparent leading-tight animate-slide-down">
+                        SMK Muhammadiyah Campaka
+                    </h1>
+                    <p class="text-lg opacity-80 font-medium animate-fade-in">Dashboard Admin System</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="animate-slide-up" style="animation-delay: 0.1s;">
+                        <input type="email" id="email" placeholder="Masukkan Email Anda" class="input-field">
+                    </div>
+                    
+                    <div class="password-container animate-slide-up relative" style="animation-delay: 0.2s;">
+                        <input type="password" id="password" placeholder="Masukkan Kata Sandi Anda" class="input-field pr-16">
+                        <span class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-400 hover:text-white transition-colors" onclick="togglePassword()">
+                            <i id="eye-icon" class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    
+                    <button onclick="login()" class="btn-primary w-full animate-slide-up" style="animation-delay: 0.3s;">
+                        <span id="login-text">Masuk ke Dashboard</span>
+                        <span id="login-spinner" class="loading-spinner hidden ml-2"></span>
+                    </button>
+                    
+                    <button onclick="resetLoginForm()" class="btn-light w-full animate-slide-up" style="animation-delay: 0.4s;">
+                        <i class="fas fa-redo-alt"></i> Reset Form
+                    </button>
+
+                    <div id="login-error" class="hidden error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="error-message-text">Error message here</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Panel -->
+            <div id="admin-panel" class="hidden">
+                <!-- Header -->
+                <div class="text-center mb-10 animate-slide-down">
+                    <div class="logo-avatar w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden shadow-2xl">
+                        <img src="https://robyyusup.github.io/ABSENSIONLINEMUHIKA/logo_muhika-removebg-preview.png" alt="Logo SMK" class="w-full h-full object-cover" />
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 bg-gradient-to-r from-primary-200 via-secondary-200 to-primary-300 bg-clip-text text-transparent leading-tight">
+                        DASHBOARD REKAP ABSENSI<br>
+                        <span class="text-xl sm:text-2xl lg:text-3xl">SMK Muhammadiyah Campaka Purwakarta</span>
+                    </h2>
+                    <p id="loggedInUserInfo" class="text-lg opacity-80 font-medium"></p>
+                </div>
+                
+                <!-- Top Controls -->
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4 animate-fade-in">
+                    <div class="user-info-card">
+                        <span class="text-xl"><i class="fas fa-user"></i></span>
+                        <span id="displayUserName" class="font-semibold"></span>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <button id="themeToggle" class="theme-toggle">
+                            <span id="themeIcon"><i class="fas fa-moon"></i></span>
+                            <span id="themeText">Mode Terang</span>
+                        </button>
+                        
+                        <button onclick="logout()" class="btn-danger">
+                            <i class="fas fa-sign-out-alt"></i> Keluar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="tab-buttons flex flex-wrap justify-center gap-3 mb-10 animate-scale-in">
+                    <button class="tab-button active" data-tab="guru-absensi-section">
+                        <i class="fas fa-chalkboard-teacher"></i> Absensi Guru
+                    </button>
+                    <button class="tab-button" data-tab="siswa-absensi-section">
+                        <i class="fas fa-user-graduate"></i> Absensi Siswa
+                    </button>
+                    <button class="tab-button" data-tab="map-siswa-section">
+                        <i class="fas fa-map-marked-alt"></i> Peta Siswa
+                    </button>
+                    <button class="tab-button" data-tab="gallery-siswa-section">
+                        <i class="fas fa-images"></i> Galeri Siswa
+                    </button>
+                </div>
+
+                <!-- Content Sections -->
+                
+                <!-- Teacher Attendance Section -->
+                <div id="guru-absensi-section" class="content-section">
+                    <h3 class="text-2xl font-bold mb-8 text-primary-200 border-b border-white/20 pb-4 flex items-center gap-3 animate-slide-up">
+                        <i class="fas fa-chalkboard-teacher animate-bounce-soft"></i> 
+                        <span>Rekap Absensi Guru</span>
+                    </h3>
+                    
+                    <div class="filter-controls flex flex-col sm:flex-row gap-5 mb-8 justify-between animate-fade-in">
+                        <div class="flex-1">
+                            <label for="filterGuruHari" class="block text-sm font-semibold mb-3 opacity-90">Filter Berdasarkan Hari:</label>
+                            <select id="filterGuruHari" class="input-field">
+                                <option value="all">Keseluruhan Minggu Ini</option>
+                                <option value="1">Hari ke-1</option>
+                                <option value="2">Hari ke-2</option>
+                                <option value="3">Hari ke-3</option>
+                                <option value="4">Hari ke-4</option>
+                                <option value="5">Hari ke-5</option>
+                                <option value="6">Hari ke-6</option>
+                                <option value="7">Hari ke-7</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex items-end gap-3">
+                            <button id="exportGuruExcel" class="btn-secondary">
+                                <i class="fas fa-file-excel"></i> Export Excel
+                            </button>
+                            <button onclick="showConfirmationModal('guru')" class="btn-danger">
+                                <i class="fas fa-trash-alt"></i> Hapus Semua Data
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto animate-slide-up">
+                        <table id="guruAbsensiTable" class="data-table w-full mobile-table">
+                            <thead>
+                                <tr>
+                                    <th data-column="namaGuru">Nama Guru</th>
+                                    <th data-column="pelajaran">Pelajaran</th>
+                                    <th data-column="kelas">Kelas</th>
+                                    <th data-column="lokasi" class="hidden sm:table-cell">Lokasi</th>
+                                    <th data-column="foto" class="hidden md:table-cell">Foto</th>
+                                    <th data-column="materi" class="hidden lg:table-cell">Materi</th>
+                                    <th data-column="indikator">Indikator</th>
+                                    <th data-column="totalMinggu">Total Minggu</th>
+                                </tr>
+                            </thead>
+                            <tbody id="guruAbsensiBody">
+                                <tr>
+                                    <td colspan="8" class="text-center py-12">
+                                        <div class="loading-spinner mx-auto mb-3"></div>
+                                        <div class="font-medium">Memuat data absensi guru...</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Student Attendance Section -->
+                <div id="siswa-absensi-section" class="content-section hidden">
+                    <h3 class="text-2xl font-bold mb-8 text-primary-200 border-b border-white/20 pb-4 flex items-center gap-3 animate-slide-up">
+                        <i class="fas fa-user-graduate animate-bounce-soft"></i> 
+                        <span>Rekap Absensi Siswa</span>
+                    </h3>
+                    
+                    <div class="filter-controls flex flex-col sm:flex-row gap-5 mb-8 justify-between animate-fade-in">
+                        <div class="flex-1">
+                            <label for="filterSiswaHari" class="block text-sm font-semibold mb-3 opacity-90">Filter Berdasarkan Hari:</label>
+                            <select id="filterSiswaHari" class="input-field">
+                                <option value="all">Keseluruhan Minggu Ini</option>
+                                <option value="1">Hari ke-1</option>
+                                <option value="2">Hari ke-2</option>
+                                <option value="3">Hari ke-3</option>
+                                <option value="4">Hari ke-4</option>
+                                <option value="5">Hari ke-5</option>
+                                <option value="6">Hari ke-6</option>
+                                <option value="7">Hari ke-7</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex items-end gap-3">
+                            <button id="exportSiswaExcel" class="btn-secondary">
+                                <i class="fas fa-file-excel"></i> Export Excel
+                            </button>
+                            <button onclick="showConfirmationModal('siswa')" class="btn-danger">
+                                <i class="fas fa-trash-alt"></i> Hapus Semua Data
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto animate-slide-up">
+                        <table id="siswaAbsensiTable" class="data-table w-full mobile-table">
+                            <thead>
+                                <tr>
+                                    <th data-column="namaSiswa">Nama Siswa</th>
+                                    <th data-column="pelajaran">Mapel</th>
+                                    <th data-column="kelas">Kelas</th>
+                                    <th data-column="lokasi" class="hidden sm:table-cell">Lokasi</th>
+                                    <th data-column="foto" class="hidden md:table-cell">Foto</th>
+                                    <th data-column="namaGuru" class="hidden lg:table-cell">Guru</th>
+                                    <th data-column="indikator">Indikator</th>
+                                    <th data-column="totalMinggu">Total Minggu</th>
+                                </tr>
+                            </thead>
+                            <tbody id="siswaAbsensiBody">
+                                <tr>
+                                    <td colspan="8" class="text-center py-12">
+                                        <div class="loading-spinner mx-auto mb-3"></div>
+                                        <div class="font-medium">Memuat data absensi siswa...</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div id="map-siswa-section" class="content-section hidden">
+                    <h3 class="text-2xl font-bold mb-8 text-primary-200 border-b border-white/20 pb-4 flex items-center gap-3 animate-slide-up">
+                        <i class="fas fa-map-marked-alt animate-bounce-soft"></i> 
+                        <span>Peta Lokasi Absensi Siswa</span>
+                    </h3>
+                    
+                    <div id="mapContainer" class="w-full h-96 sm:h-[500px] bg-neutral-700 flex items-center justify-center rounded-xl animate-scale-in">
+                        <div class="text-center">
+                            <div class="loading-spinner mx-auto mb-3"></div>
+                            <div class="font-medium">Memuat peta lokasi siswa...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Section -->
+                <div id="gallery-siswa-section" class="content-section hidden">
+                    <h3 class="text-2xl font-bold mb-8 text-primary-200 border-b border-white/20 pb-4 flex items-center gap-3 animate-slide-up">
+                        <i class="fas fa-images animate-bounce-soft"></i> 
+                        <span>Galeri Foto Absensi Siswa</span>
+                    </h3>
+                    
+                    <div id="galleryContainer" class="gallery-grid animate-fade-in">
+                        <div class="col-span-full text-center py-12">
+                            <div class="loading-spinner mx-auto mb-3"></div>
+                            <div class="font-medium">Memuat galeri foto siswa...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-16 text-center text-sm opacity-60 animate-fade-in">
+                <p class="font-medium">© 2025 SMK Muhammadiyah Campaka Purwakarta</p>
+                <p class="text-xs mt-2">Sistem Manajemen Absensi Digital Versi 3.0</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded before executing any code
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create particle system
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                if (!particlesContainer) return;
+                
+                const particleCount = 50;
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle-element';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 8 + 's';
+                    particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                    particlesContainer.appendChild(particle);
+                }
+            }
+
+            // Initialize particles
+            createParticles();
+
+            // Firebase Configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyDrt5MHhs-Wjoye8swLwLb068HC4kme-rg",
+                authDomain: "absensionlinemuhika.firebaseapp.com",
+                databaseURL: "https://absensionlinemuhika-default-rtdb.firebaseio.com",
+                projectId: "absensionlinemuhika"
+            };
+            
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+            const db = firebase.database();
+
+            // Global Variables
+            let currentUserRole = null;
+            let currentUserName = null;
+            let currentUserClass = null;
+            let map;
+            let markers = [];
+            let dataToDeleteType = null;
+            let usersDataCache = {};
+
+            // Helper function to fetch user data from Firebase or cache
+            async function getUserDataFromFirebase(uid) {
+                if (usersDataCache[uid]) {
+                    return usersDataCache[uid];
+                }
+                try {
+                    const userSnapshot = await db.ref(`users/${uid}`).once('value');
+                    const userData = userSnapshot.val();
+                    if (userData) {
+                        usersDataCache[uid] = userData;
+                        return userData;
+                    }
+                    return null;
+                } catch (error) {
+                    console.warn(`Error fetching user data for UID ${uid}:`, error);
+                    return null;
+                }
+            }
+
+            // Enhanced Password Toggle Function
+            window.togglePassword = function() {
+                const passwordInput = document.getElementById('password');
+                const eyeIcon = document.getElementById('eye-icon');
+                
+                if (!passwordInput || !eyeIcon) return;
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    eyeIcon.classList.remove('fa-eye');
+                    eyeIcon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    eyeIcon.classList.remove('fa-eye-slash');
+                    eyeIcon.classList.add('fa-eye');
+                }
+            }
+
+            // Enhanced Theme Toggle
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+
+            function applyTheme(theme) {
+                const body = document.body;
+                if (!themeIcon || !themeText) return;
+                
+                if (theme === 'dark') {
+                    body.classList.remove('light-mode');
+                    themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
+                    themeText.textContent = 'Mode Terang';
+                } else {
+                    body.classList.add('light-mode');
+                    themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
+                    themeText.textContent = 'Mode Gelap';
+                }
+                localStorage.setItem('theme', theme);
+            }
+
+            // Initialize theme
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(savedTheme);
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    const currentTheme = localStorage.getItem('theme');
+                    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+                });
+            }
+
+            // Show Toast Notification
+            function showToast(message, type = 'success') {
+                const toast = document.getElementById('toast');
+                const toastMessage = document.getElementById('toast-message');
+                
+                if (!toast || !toastMessage) {
+                    console.warn('Toast elements not found');
+                    return;
+                }
+                
+                toastMessage.textContent = message;
+                
+                let icon, color;
+                switch(type) {
+                    case 'success':
+                        icon = 'fa-check-circle';
+                        color = 'text-success-400';
+                        break;
+                    case 'error':
+                        icon = 'fa-exclamation-circle';
+                        color = 'text-danger-400';
+                        break;
+                    case 'warning':
+                        icon = 'fa-exclamation-triangle';
+                        color = 'text-warning-400';
+                        break;
+                    case 'info':
+                        icon = 'fa-info-circle';
+                        color = 'text-primary-400';
+                        break;
+                    default:
+                        icon = 'fa-info-circle';
+                        color = 'text-gray-400';
+                }
+                
+                toast.innerHTML = `<i class="fas ${icon} ${color}"></i><div>${message}</div>`;
+                
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            // Enhanced Authentication State Listener
+            auth.onAuthStateChanged(async user => {
+                if (user) {
+                    try {
+                        const userData = await getUserDataFromFirebase(user.uid);
+                        if (userData) {
+                            currentUserRole = userData.role;
+                            currentUserName = userData.name;
+                            currentUserClass = userData.associatedClass || null; 
+                            showAdminPanel(user.email);
+                            setTimeout(() => {
+                                const activeTab = document.querySelector('.tab-button.active');
+                                if (activeTab) activeTab.click(); 
+                            }, 500);
+                            showToast(`Selamat datang, ${userData.name || user.email}`, 'success');
+                        } else {
+                            showError("Informasi peran pengguna tidak ditemukan. Silakan hubungi admin.");
+                            logout();
+                        }
+                    } catch (error) {
+                        console.error("Error fetching user role:", error);
+                        showError("Gagal memuat peran pengguna. Coba lagi.");
+                        logout();
+                    }
+                } else {
+                    showLoginArea();
+                }
+            });
+
+            // Enhanced Login Function
+            window.login = async function() {
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                const loginText = document.getElementById('login-text');
+                const loginSpinner = document.getElementById('login-spinner');
+                const loginError = document.getElementById('login-error');
+                
+                if (!email || !password || !loginText || !loginSpinner) {
+                    console.error('Login form elements not found');
+                    return;
+                }
+                
+                const emailValue = email.value.trim();
+                const passwordValue = password.value;
+                
+                if (!emailValue || !passwordValue) {
+                    showError("Mohon isi email dan kata sandi dengan lengkap.");
+                    return;
+                }
+
+                loginText.textContent = 'Memproses Login...';
+                loginSpinner.classList.remove('hidden');
+                if (loginError) loginError.classList.add('hidden');
+
+                try {
+                    await auth.signInWithEmailAndPassword(emailValue, passwordValue);
+                } catch (error) {
+                    console.error("Login error:", error);
+                    let errorMessage = "Terjadi kesalahan saat masuk.";
+                    
+                    switch (error.code) {
+                        case 'auth/user-not-found':
+                        case 'auth/wrong-password':
+                            errorMessage = "Email atau kata sandi tidak valid.";
+                            break;
+                        case 'auth/invalid-email':
+                            errorMessage = "Format email tidak valid.";
+                            break;
+                        case 'auth/too-many-requests':
+                            errorMessage = "Terlalu banyak percobaan. Silakan coba lagi nanti.";
+                            break;
+                        case 'auth/network-request-failed':
+                            errorMessage = "Koneksi internet bermasalah. Silakan coba lagi.";
+                            break;
+                        default:
+                            errorMessage = `Kesalahan: ${error.message}`;
+                    }
+                    
+                    showError(errorMessage);
+                } finally {
+                    setTimeout(() => {
+                        loginText.textContent = 'Masuk ke Dashboard';
+                        loginSpinner.classList.add('hidden');
+                    }, 1000);
+                }
+            }
+
+            window.resetLoginForm = function() {
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                const eyeIcon = document.getElementById('eye-icon');
+                
+                if (email) email.value = '';
+                if (password) {
+                    password.value = '';
+                    password.type = 'password';
+                }
+                if (eyeIcon) {
+                    eyeIcon.classList.remove('fa-eye-slash');
+                    eyeIcon.classList.add('fa-eye');
+                }
+                hideError();
+                showToast('Formulir login telah direset', 'info');
+            }
+
+            window.logout = async function() {
+                try {
+                    await auth.signOut();
+                    currentUserRole = null;
+                    currentUserName = null;
+                    currentUserClass = null;
+                    usersDataCache = {};
+                    markers.forEach(marker => {
+                        if (marker.remove) marker.remove();
+                    });
+                    markers = [];
+                    if (map && map.remove) {
+                        map.remove();
+                        map = null;
+                    }
+                    showToast('Anda telah keluar dari sistem', 'info');
+                } catch (error) {
+                    console.error("Logout error:", error);
+                    showToast('Gagal keluar. Silakan coba lagi.', 'error');
+                }
+            }
+
+            function showAdminPanel(userEmail) {
+                const loginArea = document.getElementById("login-area");
+                const adminPanel = document.getElementById("admin-panel");
+                const loggedInUserInfo = document.getElementById("loggedInUserInfo");
+                const displayUserName = document.getElementById("displayUserName");
+                
+                if (!loginArea || !adminPanel) return;
+                
+                loginArea.style.transform = 'scale(0.95)';
+                loginArea.style.opacity = '0';
+                
+                setTimeout(() => {
+                    loginArea.classList.add("hidden");
+                    adminPanel.classList.remove("hidden");
+                    adminPanel.style.opacity = '0';
+                    adminPanel.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        adminPanel.style.opacity = '1';
+                        adminPanel.style.transform = 'translateY(0)';
+                    }, 50);
+                    
+                    if (loggedInUserInfo) {
+                        loggedInUserInfo.textContent = `Selamat datang, ${currentUserName || userEmail} (${currentUserRole})`;
+                    }
+                    if (displayUserName) {
+                        displayUserName.textContent = `${currentUserRole} | ${currentUserName || userEmail}`;
+                    }
+                    hideError();
+                }, 300);
+            }
+
+            function showLoginArea() {
+                const loginArea = document.getElementById("login-area");
+                const adminPanel = document.getElementById("admin-panel");
+                const guruAbsensiBody = document.getElementById("guruAbsensiBody");
+                const siswaAbsensiBody = document.getElementById("siswaAbsensiBody");
+                
+                if (!loginArea || !adminPanel) return;
+                
+                adminPanel.style.opacity = '0';
+                adminPanel.style.transform = 'translateY(-20px)';
+                
+                setTimeout(() => {
+                    loginArea.classList.remove("hidden");
+                    adminPanel.classList.add("hidden");
+                    
+                    if (guruAbsensiBody) {
+                        guruAbsensiBody.innerHTML = `
+                            <tr><td colspan="8" class="text-center py-12">
+                                <div class="loading-spinner mx-auto mb-3"></div>
+                                <div class="font-medium">Memuat data absensi guru...</div>
+                            </td></tr>
+                        `;
+                    }
+                    if (siswaAbsensiBody) {
+                        siswaAbsensiBody.innerHTML = `
+                            <tr><td colspan="8" class="text-center py-12">
+                                <div class="loading-spinner mx-auto mb-3"></div>
+                                <div class="font-medium">Memuat data absensi siswa...</div>
+                            </td></tr>
+                        `;
+                    }
+                    
+                    window.resetLoginForm(); 
+                    
+                    loginArea.style.opacity = '1';
+                    loginArea.style.transform = 'scale(1)';
+                }, 300);
+            }
+
+            function showError(message) {
+                const errorElement = document.getElementById("login-error");
+                const errorMessageText = document.getElementById("error-message-text");
+                
+                if (!errorElement || !errorMessageText) return;
+                
+                errorMessageText.textContent = message;
+                errorElement.classList.remove("hidden");
+            }
+
+            function hideError() {
+                const errorElement = document.getElementById("login-error");
+                if (errorElement) {
+                    errorElement.classList.add("hidden");
+                }
+            }
+
+            // Enhanced Tab Navigation
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    createRippleEffect(this, event);
+                    
+                    document.querySelectorAll('.tab-button').forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.transform = 'translateY(0)';
+                    });
+                    this.classList.add('active');
+
+                    document.querySelectorAll('.content-section').forEach(section => {
+                        section.style.opacity = '0';
+                        section.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            section.classList.add('hidden');
+                        }, 200);
+                    });
+
+                    const targetSectionId = this.dataset.tab;
+                    setTimeout(() => {
+                        const targetSection = document.getElementById(targetSectionId);
+                        if (!targetSection) return;
+                        
+                        targetSection.classList.remove('hidden');
+                        setTimeout(() => {
+                            targetSection.style.opacity = '1';
+                            targetSection.style.transform = 'translateY(0)';
+                        }, 50);
+
+                        switch (targetSectionId) {
+                            case 'guru-absensi-section':
+                                const filterGuruHari = document.getElementById('filterGuruHari');
+                                loadAbsensiData('guru', filterGuruHari ? filterGuruHari.value : 'all');
+                                break;
+                            case 'siswa-absensi-section':
+                                const filterSiswaHari = document.getElementById('filterSiswaHari');
+                                loadAbsensiData('siswa', filterSiswaHari ? filterSiswaHari.value : 'all');
+                                break;
+                            case 'map-siswa-section':
+                                setTimeout(() => {
+                                    initMap();
+                                    loadSiswaLocations();
+                                }, 300);
+                                break;
+                            case 'gallery-siswa-section':
+                                loadStudentGallery();
+                                break;
+                        }
+                    }, 200);
+                });
+            });
+
+            function createRippleEffect(element, event) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                
+                const rect = element.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                element.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 800);
+            }
+
+            // Enhanced Data Loading Functions
+            async function loadAbsensiData(type, filterDay = 'all') {
+                const tbodyId = type === 'guru' ? 'guruAbsensiBody' : 'siswaAbsensiBody';
+                const tbody = document.getElementById(tbodyId);
+                const tableId = type === 'guru' ? 'guruAbsensiTable' : 'siswaAbsensiTable';
+                
+                if (!tbody) {
+                    console.error(`Table body element ${tbodyId} not found`);
+                    return;
+                }
+                
+                tbody.innerHTML = `
+                    <tr><td colspan="8" class="text-center py-12">
+                        <div class="loading-spinner mx-auto mb-3"></div>
+                        <div class="font-medium">Memuat data absensi ${type === 'guru' ? 'guru' : 'siswa'}...</div>
+                    </td></tr>
+                `;
+
+                try {
+                    const refPath = type === 'guru' ? 'absensi/guru' : 'absensi/siswa';
+                    const snapshot = await db.ref(refPath).once('value');
+                    const rawData = snapshot.val();
+                    let aggregatedData = {};
+
+                    if (rawData) {
+                        if (type === 'guru') {
+                            for (const guruId in rawData) {
+                                if (currentUserRole === 'guru' && guruId !== auth.currentUser.uid) {
+                                    continue;
+                                }
+
+                                const classOrSubjectEntries = rawData[guruId];
+                                
+                                if (!aggregatedData[guruId]) {
+                                    aggregatedData[guruId] = {
+                                        id: guruId,
+                                        namaGuru: 'Tidak Dikenal', 
+                                        pelajaran: 'Tidak Diketahui',
+                                        kelas: 'Tidak Diketahui',
+                                        lokasi: 'Tidak Diketahui',
+                                        foto: 'Tidak Ada',
+                                        materi: 'Tidak Ada',
+                                        dayStatuses: Array(7).fill('Belum Absen'),
+                                        totalHadir: 0,
+                                        totalAlfa: 0,
+                                        totalIzin: 0,
+                                        totalSakit: 0,
+                                        totalMinggu: '0 Hadir, 0 Sakit, 0 Izin, 0 Alfa'
+                                    };
+                                }
+                                
+                                for (const classKey in classOrSubjectEntries) {
+                                    const timestampEntries = classOrSubjectEntries[classKey];
+
+                                    for (const timestampKey in timestampEntries) {
+                                        const entry = timestampEntries[timestampKey];
+                                        
+                                        // Get teacher name and subject directly from attendance data
+                                        if (entry.nama) {
+                                            aggregatedData[guruId].namaGuru = entry.nama;
+                                        }
+                                        if (entry.mapel) {
+                                            aggregatedData[guruId].pelajaran = entry.mapel;
+                                        }
+                                        
+                                        const dateObj = new Date(parseInt(timestampKey)); 
+                                        const dayOfWeek = dateObj.getDay();
+                                        const dayIndex = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+
+                                        aggregatedData[guruId].dayStatuses[dayIndex] = entry.status;
+                                        aggregatedData[guruId].kelas = entry.kelas || aggregatedData[guruId].kelas;
+                                        
+                                        if (entry.lokasi && entry.lokasi.latitude && entry.lokasi.longitude) {
+                                            aggregatedData[guruId].lokasi = `<a href="https://www.openstreetmap.org/?mlat=${entry.lokasi.latitude}&mlon=${entry.lokasi.longitude}#map=15/${entry.lokasi.latitude}/${entry.lokasi.longitude}" target="_blank" class="text-secondary-300 hover:text-secondary-200 transition-colors duration-200 hover:underline"><i class="fas fa-map-marker-alt mr-1"></i> Lihat Peta</a>`;
+                                        }
+                                        
+                                        aggregatedData[guruId].foto = entry.foto || aggregatedData[guruId].foto;
+                                        aggregatedData[guruId].materi = entry.materi || aggregatedData[guruId].materi;
+                                    }
+                                }
+                                
+                                aggregatedData[guruId].totalHadir = aggregatedData[guruId].dayStatuses.filter(s => s === 'Hadir').length;
+                                aggregatedData[guruId].totalAlfa = aggregatedData[guruId].dayStatuses.filter(s => s === 'Alfa').length;
+                                aggregatedData[guruId].totalIzin = aggregatedData[guruId].dayStatuses.filter(s => s === 'Izin').length;
+                                aggregatedData[guruId].totalSakit = aggregatedData[guruId].dayStatuses.filter(s => s === 'Sakit').length;
+                                aggregatedData[guruId].totalMinggu = `${aggregatedData[guruId].totalHadir} Hadir, ${aggregatedData[guruId].totalSakit} Sakit, ${aggregatedData[guruId].totalIzin} Izin, ${aggregatedData[guruId].totalAlfa} Alfa`;
+                            }
+                        } else {
+                            for (const userId in rawData) {
+                                let isAllowed = true;
+                                
+                                if (currentUserRole === 'guru') {
+                                    isAllowed = await isTeacherOfStudent(userId, currentUserName);
+                                } else if (currentUserRole === 'waliKelas') {
+                                    isAllowed = await isStudentInWaliKelasClass(userId, currentUserClass);
+                                }
+
+                                if (!isAllowed) continue;
+
+                                const mapelData = rawData[userId];
+                                
+                                if (!aggregatedData[userId]) {
+                                    aggregatedData[userId] = {
+                                        id: userId,
+                                        namaSiswa: 'Tidak Dikenal',
+                                        pelajaran: 'Tidak Diketahui',
+                                        kelas: 'Tidak Diketahui',
+                                        lokasi: 'Tidak Ada',
+                                        foto: 'Tidak Ada',
+                                        namaGuru: 'Tidak Diketahui',
+                                        dayStatuses: Array(7).fill('Belum Absen'),
+                                        totalHadir: 0,
+                                        totalAlfa: 0,
+                                        totalIzin: 0,
+                                        totalSakit: 0,
+                                        totalMinggu: '0 Hadir, 0 Sakit, 0 Izin, 0 Alfa'
+                                    };
+                                }
+                                
+                                for (const mapelKey in mapelData) {
+                                    const waktuData = mapelData[mapelKey];
+                                    for (const waktuKey in waktuData) {
+                                        const entry = waktuData[waktuKey];
+                                        const date = new Date(entry.waktu).toISOString().split('T')[0];
+                                        const dayOfWeek = new Date(date).getDay();
+                                        const dayIndex = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+
+                                        aggregatedData[userId].dayStatuses[dayIndex] = entry.status || 'Hadir';
+                                        aggregatedData[userId].namaSiswa = entry.nama || aggregatedData[userId].namaSiswa;
+                                        aggregatedData[userId].pelajaran = entry.mapel || aggregatedData[userId].pelajaran;
+                                        aggregatedData[userId].kelas = entry.kelas || aggregatedData[userId].kelas;
+                                        aggregatedData[userId].namaGuru = entry.namaGuru || aggregatedData[userId].namaGuru;
+                                        
+                                        if (entry.lokasi && entry.lokasi.latitude) {
+                                            aggregatedData[userId].lokasi = `<a href="https://www.openstreetmap.org/?mlat=${entry.lokasi.latitude}&mlon=${entry.lokasi.longitude}#map=15/${entry.lokasi.latitude}/${entry.lokasi.longitude}" target="_blank" class="text-secondary-300 hover:text-secondary-200 transition-colors duration-200 hover:underline"><i class="fas fa-map-marker-alt mr-1"></i> Lihat Peta</a>`;
+                                        }
+                                        
+                                        aggregatedData[userId].foto = entry.foto || aggregatedData[userId].foto;
+                                    }
+                                }
+                                
+                                aggregatedData[userId].totalHadir = aggregatedData[userId].dayStatuses.filter(s => s === 'Hadir').length;
+                                aggregatedData[userId].totalAlfa = aggregatedData[userId].dayStatuses.filter(s => s === 'Alfa').length;
+                                aggregatedData[userId].totalIzin = aggregatedData[userId].dayStatuses.filter(s => s === 'Izin').length;
+                                aggregatedData[userId].totalSakit = aggregatedData[userId].dayStatuses.filter(s => s === 'Sakit').length;
+                                aggregatedData[userId].totalMinggu = `${aggregatedData[userId].totalHadir} Hadir, ${aggregatedData[userId].totalSakit} Sakit, ${aggregatedData[userId].totalIzin} Izin, ${aggregatedData[userId].totalAlfa} Alfa`;
+                            }
+                        }
+                    }
+
+                    const finalData = Object.values(aggregatedData);
+                    renderTable(type, finalData, filterDay);
+                    showToast(`Data absensi ${type === 'guru' ? 'guru' : 'siswa'} berhasil dimuat`, 'success');
+                    
+                } catch (error) {
+                    console.error("Error loading attendance data:", error);
+                    tbody.innerHTML = `
+                        <tr><td colspan="8" class="text-center py-12 text-danger-300">
+                            <div class="text-danger-400 text-2xl mb-3"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="font-semibold">Gagal memuat data</div>
+                            <div class="text-sm opacity-75 mt-1">${error.message}</div>
+                        </td></tr>
+                    `;
+                    showToast(`Gagal memuat data absensi: ${error.message}`, 'error');
+                }
+            }
+
+            async function isTeacherOfStudent(studentId, teacherName) {
+                try {
+                    const studentAbsenceSnapshot = await db.ref(`absensi/siswa/${studentId}`).once('value');
+                    const studentData = studentAbsenceSnapshot.val();
+                    if (studentData) {
+                        for (const mapelKey in studentData) {
+                            const waktuData = studentData[mapelKey];
+                            for (const waktuKey in waktuData) {
+                                const entry = waktuData[waktuKey];
+                                if (entry.namaGuru === teacherName) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                    return false;
+                } catch (error) {
+                    console.error("Error checking teacher-student relationship:", error);
+                    return false;
+                }
+            }
+
+            async function isStudentInWaliKelasClass(studentId, waliKelasClass) {
+                try {
+                    const studentAbsenceSnapshot = await db.ref(`absensi/siswa/${studentId}`).once('value');
+                    const studentData = studentAbsenceSnapshot.val();
+                    if (studentData) {
+                        for (const mapelKey in studentData) {
+                            const waktuData = studentData[mapelKey];
+                            for (const waktuKey in waktuData) {
+                                const entry = waktuData[waktuKey];
+                                if (entry.kelas === waliKelasClass) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                    return false;
+                } catch (error) {
+                    console.error("Error checking student-wali kelas relationship:", error);
+                    return false;
+                }
+            }
+
+            // Enhanced Table Rendering
+            function renderTable(type, data, filterDay) {
+                const tbodyId = type === 'guru' ? 'guruAbsensiBody' : 'siswaAbsensiBody';
+                const tableId = type === 'guru' ? 'guruAbsensiTable' : 'siswaAbsensiTable';
+                const tbody = document.getElementById(tbodyId);
+                const table = document.getElementById(tableId);
+                
+                if (!tbody || !table) return;
+                
+                const theadRow = table.querySelector('thead tr');
+                if (!theadRow) return;
+                
+                
+                tbody.innerHTML = '';
+
+                theadRow.querySelectorAll('.dynamic-day-header').forEach(header => header.remove());
+
+                const indikatorHeader = theadRow.querySelector('[data-column="indikator"]');
+                if (filterDay === 'all') {
+                    for (let i = 1; i <= 7; i++) {
+                        const th = document.createElement('th');
+                        th.textContent = `Hari ${i}`;
+                        th.classList.add('dynamic-day-header', 'hidden', 'lg:table-cell');
+                        th.setAttribute('data-column', `hari${i}`);
+                        if (indikatorHeader) {
+                            theadRow.insertBefore(th, indikatorHeader);
+                        }
+                    }
+                } else {
+                    const th = document.createElement('th');
+                    th.textContent = `Hari ${filterDay}`;
+                    th.classList.add('dynamic-day-header');
+                    th.setAttribute('data-column', `hari${filterDay}`);
+                    if (indikatorHeader) {
+                        theadRow.insertBefore(th, indikatorHeader);
+                    }
+                }
+
+                if (data.length === 0) {
+                    tbody.innerHTML = `
+                        <tr><td colspan="8" class="text-center py-12 opacity-60">
+                            <div class="text-4xl mb-3"><i class="fas fa-database"></i></div>
+                            <div class="font-semibold">Tidak ada data absensi</div>
+                            <div class="text-sm mt-1">Data akan muncul setelah ada aktivitas absensi</div>
+                        </td></tr>
+                    `;
+                    return;
+                }
+
+                data.forEach((entry, index) => {
+                    const row = tbody.insertRow();
+                    row.style.opacity = '0';
+                    row.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        row.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+                        row.style.opacity = '1';
+                        row.style.transform = 'translateY(0)';
+                    }, index * 100);
+
+                    if (type === 'guru') {
+                        addCell(row, 'Nama Guru', entry.namaGuru);
+                        addCell(row, 'Pelajaran', entry.pelajaran);
+                        addCell(row, 'Kelas', entry.kelas);
+                        addCell(row, 'Lokasi', entry.lokasi, 'hidden sm:table-cell');
+                        
+                        const fotoCell = addCell(row, 'Foto', '', 'hidden md:table-cell');
+                        if (entry.foto && entry.foto !== 'Tidak Ada') {
+                            const img = document.createElement('img');
+                            img.src = entry.foto;
+                            img.alt = `Foto Guru ${entry.namaGuru}`;
+                            img.className = 'w-20 h-20 object-cover rounded-xl mx-auto shadow-lg transition-transform duration-300 hover:scale-110 cursor-pointer';
+                            img.onclick = () => showImageModal(entry.foto, `Foto Guru ${entry.namaGuru}`);
+                            fotoCell.appendChild(img);
+                        } else {
+                            fotoCell.innerHTML = '<span class="text-neutral-400"><i class="fas fa-image mr-1"></i> Tidak Ada</span>';
+                        }
+                        
+                        addCell(row, 'Materi', entry.materi, 'hidden lg:table-cell');
+                    } else {
+                        addCell(row, 'Nama Siswa', entry.namaSiswa);
+                        // Shortened subject name with tooltip
+                        const pelajaranCell = addCell(row, 'Mapel', '');
+                        pelajaranCell.innerHTML = `<span class="short-text" title="${entry.pelajaran}">${entry.pelajaran}</span>`;
+                        
+                        addCell(row, 'Kelas', entry.kelas);
+                        addCell(row, 'Lokasi', entry.lokasi, 'hidden sm:table-cell');
+                        
+                        const fotoCell = addCell(row, 'Foto', '', 'hidden md:table-cell');
+                        if (entry.foto && entry.foto !== 'Tidak Ada') {
+                            const img = document.createElement('img');
+                            img.src = entry.foto;
+                            img.alt = `Foto Siswa ${entry.namaSiswa}`;
+                            img.className = 'w-20 h-20 object-cover rounded-xl mx-auto shadow-lg transition-transform duration-300 hover:scale-110 cursor-pointer';
+                            img.onclick = () => showImageModal(entry.foto, `Foto Absensi ${entry.namaSiswa || 'Siswa'}`); 
+                            fotoCell.appendChild(img);
+                        } else {
+                            fotoCell.innerHTML = '<span class="text-neutral-400"><i class="fas fa-image mr-1"></i> Tidak Ada</span>';
+                        }
+                        
+                        // Shortened teacher name with tooltip
+                        const guruCell = addCell(row, 'Guru', '', 'hidden lg:table-cell');
+                        guruCell.innerHTML = `<span class="short-text" title="${entry.namaGuru}">${entry.namaGuru}</span>`;
+                    }
+
+                    if (filterDay === 'all') {
+                        entry.dayStatuses.forEach((status, idx) => {
+                            const cell = addCell(row, `Hari ${idx + 1}`, '', 'hidden lg:table-cell');
+                            cell.innerHTML = `<span class="status-badge ${getStatusClass(status)}">${getStatusIcon(status)} ${status}</span>`;
+                        });
+                    } else {
+                        const dayIndex = parseInt(filterDay) - 1;
+                        const status = entry.dayStatuses[dayIndex];
+                        const cell = addCell(row, `Hari ${filterDay}`, '');
+                        cell.innerHTML = `<span class="status-badge ${getStatusClass(status)}">${getStatusIcon(status)} ${status}</span>`;
+                    }
+
+                    const indicatorCell = addCell(row, 'Indikator', '');
+                    if (entry.totalAlfa > 0) {
+                        indicatorCell.innerHTML = `<span class="status-badge status-alfa"><i class="fas fa-exclamation-circle mr-1"></i> Perlu Perhatian</span>`;
+                    } else if (entry.totalSakit > 0 || entry.totalIzin > 0) {
+                        indicatorCell.innerHTML = `<span class="status-badge status-izin"><i class="fas fa-info-circle mr-1"></i> Cukup Baik</span>`;
+                    } else {
+                        indicatorCell.innerHTML = `<span class="status-badge status-hadir"><i class="fas fa-check-circle mr-1"></i> Sangat Baik</span>`;
+                    }
+
+                    addCell(row, 'Total Minggu', entry.totalMinggu);
+                });
+            }
+
+            function addCell(row, label, content, className = '') {
+                const cell = row.insertCell();
+                cell.setAttribute('data-label', label);
+                if (className) cell.className = className;
+                if (typeof content === 'string') {
+                    cell.innerHTML = content;
+                }
+                return cell;
+            }
+
+            function getStatusClass(status) {
+                switch (status) {
+                    case 'Hadir': return 'status-hadir';
+                    case 'Alfa': return 'status-alfa';
+                    case 'Izin': return 'status-izin';
+                    case 'Sakit': return 'status-sakit';
+                    default: return 'status-default';
+                }
+            }
+
+            function getStatusIcon(status) {
+                switch (status) {
+                    case 'Hadir': return '<i class="fas fa-check-circle"></i>';
+                    case 'Alfa': return '<i class="fas fa-times-circle"></i>';
+                    case 'Izin': return '<i class="fas fa-envelope"></i>';
+                    case 'Sakit': return '<i class="fas fa-procedures"></i>';
+                    default: return '<i class="fas fa-question-circle"></i>';
+                }
+            }
+
+            function showImageModal(imageSrc, title) {
+                const modal = document.createElement('div');
+                modal.className = 'modal-overlay active';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-bold text-white">${title}</h3>
+                            <button onclick="this.closest('.modal-overlay').classList.remove('active')" class="text-neutral-400 hover:text-red-500 transition-colors">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <img src="${imageSrc}" alt="${title}" class="w-full rounded-lg shadow-lg">
+                    </div>
+                `;
+                
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                        modal.addEventListener('transitionend', () => modal.remove(), { once: true });
+                    }
+                });
+                
+                document.body.appendChild(modal);
+            }
+
+            // Filter Event Listeners
+            const filterGuruHari = document.getElementById('filterGuruHari');
+            const filterSiswaHari = document.getElementById('filterSiswaHari');
+            
+            if (filterGuruHari) {
+                filterGuruHari.addEventListener('change', function() {
+                    loadAbsensiData('guru', this.value);
+                });
+            }
+
+            if (filterSiswaHari) {
+                filterSiswaHari.addEventListener('change', function() {
+                    loadAbsensiData('siswa', this.value);
+                });
+            }
+
+            // Excel Export Functions
+            function exportTableToExcel(tableId, filename) {
+                const table = document.getElementById(tableId);
+                if (!table) return;
+                
+                const tableClone = table.cloneNode(true); 
+
+                const headerCells = tableClone.querySelectorAll('thead th');
+                const bodyRows = tableClone.querySelectorAll('tbody tr');
+                
+                let colsToRemove = [];
+                headerCells.forEach((th, index) => {
+                    if (th.classList.contains('hidden')) { 
+                        colsToRemove.push(index);
+                    }
+                });
+
+                for (let i = colsToRemove.length - 1; i >= 0; i--) {
+                    const colIndex = colsToRemove[i];
+                    if (headerCells[colIndex]) {
+                        headerCells[colIndex].remove();
+                    }
+                    bodyRows.forEach(row => {
+                        if (row.cells[colIndex]) {
+                            row.cells[colIndex].remove();
+                        }
+                    });
+                }
+
+                const ws = XLSX.utils.table_to_sheet(tableClone);
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, "Rekap Absensi");
+                XLSX.writeFile(wb, filename);
+                
+                showToast(`Data berhasil diekspor ke ${filename}`, 'success');
+            }
+
+            const exportGuruExcel = document.getElementById('exportGuruExcel');
+            const exportSiswaExcel = document.getElementById('exportSiswaExcel');
+            
+            if (exportGuruExcel) {
+                exportGuruExcel.addEventListener('click', function() {
+                    exportTableToExcel('guruAbsensiTable', 'Rekap_Absensi_Guru_SMK_Muhammadiyah_Campaka.xlsx');
+                });
+            }
+
+            if (exportSiswaExcel) {
+                exportSiswaExcel.addEventListener('click', function() {
+                    exportTableToExcel('siswaAbsensiTable', 'Rekap_Absensi_Siswa_SMK_Muhammadiyah_Campaka.xlsx');
+                });
+            }
+
+            // Map Functions
+            function initMap() {
+                const defaultLocation = { lat: -6.5583, lng: 107.4589 };
+                const mapContainer = document.getElementById('mapContainer');
+
+                if (!mapContainer) return;
+
+                if (map && map.remove) {
+                    map.remove();
+                    map = null;
+                }
+
+                mapContainer.innerHTML = '';
+
+                try {
+                    map = L.map('mapContainer').setView([defaultLocation.lat, defaultLocation.lng], 12);
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                        maxZoom: 19
+                    }).addTo(map);
+
+                    console.log('Map initialized successfully');
+                } catch (error) {
+                    console.error('Map initialization error:', error);
+                    mapContainer.innerHTML = `
+                        <div class="flex items-center justify-center h-full">
+                            <div class="text-center text-danger-300">
+                                <div class="text-danger-400 text-4xl mb-3"><i class="fas fa-map-marked-alt"></i></div>
+                                <div class="font-semibold">Gagal memuat peta</div>
+                                <div class="text-sm opacity-75 mt-1">Silakan refresh halaman atau periksa koneksi internet Anda.</div>
+                            </div>
+                        </div>
+                    `;
+                    showToast('Gagal memuat peta', 'error');
+                }
+            }
+
+            async function loadSiswaLocations() {
+                if (!map) {
+                    initMap();
+                }
+
+                markers.forEach(marker => {
+                    if (marker.remove) marker.remove();
+                });
+                markers = [];
+
+                try {
+                    const snapshot = await db.ref('absensi/siswa').once('value');
+                    const rawData = snapshot.val();
+                    let bounds = L.latLngBounds();
+                    let locationsFound = false;
+
+                    if (rawData) {
+                        for (const userId in rawData) {
+                            const mapelData = rawData[userId];
+                            for (const mapelKey in mapelData) {
+                                const waktuData = mapelData[mapelKey];
+                                for (const waktuKey in waktuData) {
+                                    const entry = waktuData[waktuKey];
+                                    if (entry.lokasi && entry.lokasi.latitude && entry.lokasi.longitude) {
+                                        const lat = parseFloat(entry.lokasi.latitude);
+                                        const lng = parseFloat(entry.lokasi.longitude);
+
+                                        if (!isNaN(lat) && !isNaN(lng)) {
+                                            const position = L.latLng(lat, lng);
+                                            
+                                            const customIcon = L.divIcon({
+                                                className: 'custom-marker',
+                                                html: '<div class="marker-pin"></div><i class="fas fa-user-graduate marker-icon"></i>',
+                                                iconSize: [30, 30],
+                                                iconAnchor: [15, 15]
+                                            });
+
+                                            const marker = L.marker(position, { icon: customIcon }).addTo(map);
+
+                                            const popupContent = `
+                                                <div class="p-4 text-neutral-900 min-w-[200px] font-inter">
+                                                    <h4 class="font-bold text-lg mb-3 text-primary-600">${entry.nama || 'Siswa Tidak Dikenal'}</h4>
+                                                    <div class="space-y-2 text-sm">
+                                                        <p><strong><i class="fas fa-users mr-1"></i> Kelas:</strong> ${entry.kelas || 'Tidak Diketahui'}</p>
+                                                        <p><strong><i class="fas fa-book mr-1"></i> Pelajaran:</strong> ${entry.mapel || 'Tidak Diketahui'}</p>
+                                                        <p><strong><i class="fas fa-clock mr-1"></i> Waktu:</strong> ${new Date(entry.waktu).toLocaleString('id-ID')}</p>
+                                                    </div>
+                                                    ${entry.foto ? 
+                                                        `<img src="${entry.foto}" alt="Foto Siswa" class="w-32 h-32 object-cover rounded-lg mt-3 mx-auto shadow-lg cursor-pointer" onclick="window.parent.showImageModal('${entry.foto}', 'Foto Absensi ${entry.nama || 'Siswa'}')">` 
+                                                        : ''}
+                                                </div>
+                                            `;
+                                            marker.bindPopup(popupContent, {
+                                                maxWidth: 300,
+                                                className: 'custom-popup'
+                                            });
+
+                                            markers.push(marker);
+                                            bounds.extend(position);
+                                            locationsFound = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (locationsFound) {
+                        map.fitBounds(bounds, { padding: [20, 20] });
+                        showToast(`Ditemukan ${markers.length} lokasi siswa`, 'info');
+                    } else {
+                        map.setView([defaultLocation.lat, defaultLocation.lng], 12);
+                        showToast('Tidak ada lokasi siswa yang ditemukan', 'info');
+                    }
+
+                } catch (error) {
+                    console.error("Error loading student locations:", error);
+                    showToast('Gagal memuat lokasi siswa', 'error');
+                }
+            }
+
+            // Gallery Function
+            async function loadStudentGallery() {
+                const galleryContainer = document.getElementById('galleryContainer');
+                if (!galleryContainer) return;
+                
+                galleryContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="loading-spinner mx-auto mb-3"></div>
+                        <div class="font-medium">Memuat galeri foto siswa...</div>
+                    </div>
+                `;
+
+                try {
+                    const snapshot = await db.ref('absensi/siswa').once('value');
+                    const rawData = snapshot.val();
+                    let galleryItems = [];
+
+                    if (rawData) {
+                        for (const userId in rawData) {
+                            const mapelData = rawData[userId];
+                            for (const mapelKey in mapelData) {
+                                const waktuData = mapelData[mapelKey];
+                                for (const waktuKey in waktuData) {
+                                    const entry = waktuData[waktuKey];
+                                    if (entry.foto) {
+                                        galleryItems.push({
+                                            image: entry.foto,
+                                            title: `Foto Absensi ${entry.nama || 'Siswa'} - ${entry.kelas || ''}`,
+                                            description: `Pelajaran: ${entry.mapel || 'Tidak Diketahui'}`,
+                                            date: new Date(entry.waktu).toLocaleDateString('id-ID')
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (galleryItems.length === 0) {
+                        galleryItems = [
+                            {
+                                image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop&auto=format',
+                                title: 'Foto Kegiatan Belajar',
+                                description: 'Siswa sedang belajar di kelas',
+                                date: '01/01/2025'
+                            },
+                            {
+                                image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop&auto=format',
+                                title: 'Praktikum Siswa',
+                                description: 'Siswa melakukan praktikum',
+                                date: '02/01/2025'
+                            },
+                            {
+                                image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=300&fit=crop&auto=format',
+                                title: 'Diskusi Kelompok',
+                                description: 'Siswa berdiskusi dalam kelompok',
+                                date: '03/01/2025'
+                            },
+                            {
+                                image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format',
+                                title: 'Presentasi Siswa',
+                                description: 'Siswa mempresentasikan hasil kerja',
+                                date: '04/01/2025'
+                            },
+                            {
+                                image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&auto=format',
+                                title: 'Kegiatan Ekstrakurikuler',
+                                description: 'Siswa dalam kegiatan ekstrakurikuler',
+                                date: '05/01/2025'
+                            },
+                            {
+                                image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop&auto=format',
+                                title: 'Kegiatan Olahraga',
+                                description: 'Siswa dalam kegiatan olahraga',
+                                date: '06/01/2025'
+                            }
+                        ];
+                        showToast('Tidak ada foto absensi siswa, menampilkan galeri contoh.', 'info');
+                    }
+
+                    renderGallery(galleryItems);
+                    
+                } catch (error) {
+                    console.error("Error loading gallery:", error);
+                    galleryContainer.innerHTML = `
+                        <div class="col-span-full text-center py-12 text-danger-300">
+                            <div class="text-danger-400 text-4xl mb-3"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="font-semibold">Gagal memuat galeri</div>
+                            <div class="text-sm opacity-75 mt-1">${error.message}</div>
+                        </div>
+                    `;
+                    showToast('Gagal memuat galeri foto', 'error');
+                }
+            }
+
+            function renderGallery(items) {
+                const galleryContainer = document.getElementById('galleryContainer');
+                if (!galleryContainer) return;
+                
+                galleryContainer.innerHTML = '';
+
+                if (items.length === 0) {
+                    galleryContainer.innerHTML = `
+                        <div class="col-span-full text-center py-12 opacity-60">
+                            <div class="text-4xl mb-3"><i class="fas fa-images"></i></div>
+                            <div class="font-semibold">Galeri Kosong</div>
+                            <div class="text-sm mt-1">Foto akan muncul setelah siswa melakukan absensi</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                items.forEach((item, index) => {
+                    const imgContainer = document.createElement('div');
+                    imgContainer.className = 'gallery-item relative group';
+                    imgContainer.style.opacity = '0';
+                    imgContainer.style.transform = 'translateY(20px)';
+                    
+                    const img = document.createElement('img');
+                    img.src = item.image;
+                    img.alt = item.title;
+                    img.className = 'w-full h-56 object-cover transition-all duration-300';
+                    img.onclick = () => showImageModal(item.image, item.title);
+                    
+                    const overlay = document.createElement('div');
+                    overlay.className = 'absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4';
+                    overlay.innerHTML = `
+                        <div class="text-white">
+                            <h4 class="font-semibold">${item.title}</h4>
+                            <p class="text-sm opacity-90">${item.description}</p>
+                            <p class="text-xs opacity-80 mt-1"><i class="far fa-calendar-alt mr-1"></i> ${item.date}</p>
+                        </div>
+                    `;
+                    
+                    imgContainer.appendChild(img);
+                    imgContainer.appendChild(overlay);
+                    galleryContainer.appendChild(imgContainer);
+                    
+                    setTimeout(() => {
+                        imgContainer.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                        imgContainer.style.opacity = '1';
+                        imgContainer.style.transform = 'translateY(0)';
+                    }, index * 150);
+                });
+
+                showToast(`Galeri foto berhasil dimuat (${items.length} foto)`, 'success');
+            }
+
+            // Confirmation Modal for Deletion
+            const confirmationModal = document.getElementById('confirmationModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+            const confirmDeleteBtn = document.getElementById('confirmDelete');
+            const cancelDeleteBtn = document.getElementById('cancelDelete');
+
+            window.showConfirmationModal = function(type) {
+                if (!confirmationModal || !modalTitle || !modalMessage) return;
+                
+                dataToDeleteType = type;
+                modalTitle.textContent = `Konfirmasi Penghapusan Data Absensi ${type === 'guru' ? 'Guru' : 'Siswa'}`;
+                modalMessage.textContent = `Apakah Anda yakin ingin menghapus SEMUA data absensi ${type === 'guru' ? 'guru' : 'siswa'}? Tindakan ini tidak dapat dibatalkan dan akan menghapus data dari database.`
+                confirmationModal.classList.add('active');
+            }
+
+            if (cancelDeleteBtn) {
+                cancelDeleteBtn.addEventListener('click', () => {
+                    if (confirmationModal) confirmationModal.classList.remove('active');
+                    dataToDeleteType = null;
+                });
+            }
+
+            if (confirmDeleteBtn) {
+                confirmDeleteBtn.addEventListener('click', () => {
+                    if (confirmationModal) confirmationModal.classList.remove('active');
+                    if (dataToDeleteType) {
+                        deleteAllAttendanceData(dataToDeleteType);
+                    }
+                });
+            }
+
+            async function deleteAllAttendanceData(type) {
+                const refPath = type === 'guru' ? 'absensi/guru' : 'absensi/siswa';
+                try {
+                    await db.ref(refPath).remove();
+                    showToast(`Semua data absensi ${type === 'guru' ? 'guru' : 'siswa'} berhasil dihapus!`, 'success');
+                    const filterElement = document.getElementById(`filter${type === 'guru' ? 'Guru' : 'Siswa'}Hari`);
+                    loadAbsensiData(type, filterElement ? filterElement.value : 'all');
+                } catch (error) {
+                    console.error(`Error deleting ${type} attendance data:`, error);
+                    showToast(`Gagal menghapus data absensi ${type === 'guru' ? 'guru' : 'siswa'}: ${error.message}`, 'error');
+                } finally {
+                    dataToDeleteType = null;
+                }
+            }
+
+            // Enhanced Enter key support for login form
+            document.addEventListener('keypress', function(e) {
+                const loginArea = document.getElementById('login-area');
+                if (e.key === 'Enter' && loginArea && !loginArea.classList.contains('hidden')) {
+                    e.preventDefault(); 
+                    window.login();
+                }
+            });
+
+            // Initialize scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            document.addEventListener('scroll', () => {
+                requestAnimationFrame(() => {
+                    // Placeholder for scroll-based animations
+                });
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
